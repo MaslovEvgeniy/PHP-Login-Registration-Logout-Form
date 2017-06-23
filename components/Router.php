@@ -22,6 +22,7 @@ class Router
      */
     private function getURI()
     {
+        //echo $_SERVER['REQUEST_URI'];
         if (!empty($_SERVER['REQUEST_URI'])) {
             return trim($_SERVER['REQUEST_URI'], '/');
         }
@@ -33,6 +34,8 @@ class Router
     public function run()
     {
         $uri = $this->getURI();
+        $length = strlen(URL);
+        $uri = substr($uri, $length);
 
         foreach ($this->routes as $pattern => $path) {
             if(preg_match("~$pattern~", $uri)) {
@@ -42,6 +45,7 @@ class Router
                 $controller = ucfirst(array_shift($segments) . "Controller");
 
                 $controllerFile = ROOT . '/controllers/' . $controller . '.php';
+
                 if(!file_exists($controllerFile)) {
                     throw new Error();
                 }

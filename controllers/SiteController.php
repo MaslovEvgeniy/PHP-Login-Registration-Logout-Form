@@ -17,7 +17,7 @@ class SiteController
 
         if(!isset($_SESSION['user']) || empty($_SESSION['user'])) {
             //if user not authorized
-            header("location: /login");
+            header("location: " . URL . "/login");
         }
         $userData = User::getUserData($_SESSION['user']);
         require_once ROOT . '/views/site/index.php';
@@ -31,7 +31,7 @@ class SiteController
     public function actionLogin()
     {
         if(isset($_SESSION['user']) || !empty($_SESSION['user'])) {
-            header("location: /");
+            header("location: " . URL ."/");
         }
 
         $error = '';
@@ -42,7 +42,7 @@ class SiteController
             $password = Helper::safeInput($_POST['password']);
             $result = User::login($login, $password);
             if($result !== false) {
-                header("location: /");
+                header("location: " . URL ."/");
             } else {
                 $error = 'Username or password are incorrect';
                 unset($_POST['password']);
@@ -63,7 +63,7 @@ class SiteController
         unset($_SESSION["user"]);
 
         //redirect user to the home page
-        header("Location: /");
+        header("Location:" . URL . "/");
         return true;
     }
 
@@ -88,7 +88,7 @@ class SiteController
             $user = new User($email, $username, $name, $password, $birth, $countryId);
             $result = $user->save();
             if($result === true) {
-                header("location: /");
+                header("location:" . URL . "/");
             } else {
                 $errors = $result;
             }

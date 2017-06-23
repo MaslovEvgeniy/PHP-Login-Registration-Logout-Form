@@ -6,8 +6,8 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Test Form | Sign In</title>
-    <link rel="stylesheet" href="/../../vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/../../web/css/styles.css">
+    <link rel="stylesheet" href=<?= URL . "/vendor/twbs/bootstrap/dist/css/bootstrap.min.css"   ?>>
+    <link rel="stylesheet" href=<?= URL . "/web/css/styles.css" ?>>
 
 </head>
 <body>
@@ -15,11 +15,11 @@
     <nav class="navbar navbar-default">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" href="/">Test Form</a>
+                <a class="navbar-brand" href=<?= URL . "/"  ?>>Test Form</a>
             </div>
             <div>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/register">Sign Up</a></li>
+                    <li><a href=<?= URL . "/register" ?>>Sign Up</a></li>
                 </ul>
             </div>
         </div>
@@ -43,7 +43,7 @@
 
                             <?= isset($error) ? "<div class=\"bg-danger\">{$error}</div>" : '' ?>
 
-                            <form id="login-form" name="loginForm" action="/login" method="post">
+                            <form id="login-form" name="loginForm" action=<?= URL . "/login" ?> method="post">
                                 <div class="form-group">
                                     <label for="login">Login</label>
                                     <input type="text" name="login" id="login" class="form-control"
